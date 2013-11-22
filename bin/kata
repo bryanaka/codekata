@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require "bundler/setup"
+require "code_kata"
+
+module Kata
+	class Cli < Thor
+		# This should set the root to be the directory the gemfile is in
+		PROJECT_ROOT = Dir.pwd
+		
+		package_name "Kata"
+		map "g" => :generate
+
+		desc "generate [LANGUAGE] -d=[NAME]", "generate template code for a specific language under language/name"
+		method_options :directory => :string, :aliases => "-d"
+		method_options :file => :string
+		method_options :test => :string, :aliases => "-t"
+		method_options :src => :string, :aliases => "-s"
+		def generate(lang)
+			puts "this should generate a file in #{lang}/#{options[:directory]}"
+		end
+
+		desc "test [project]"
+		def test
+
+		end
+
+	end
+end

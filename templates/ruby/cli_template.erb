@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+
+require "bundler/setup"
+require "thor"
+require File.expand_path("../../lib/<%= file_name %>", __FILE__)
+
+module <%= module_name %>
+	class Cli < Thor
+		package_name "<%= file_name %>"
+		
+		desc "run [file]", "Write the description of the CLI here"
+		def run(file)
+			input = File.open(file)
+			# do something with the input
+		end
+
+	end
+end
+
+<%= module_name %>::Cli.start
